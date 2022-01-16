@@ -24,8 +24,8 @@ set(PROJECT_SOURCES
         widgets/mainwindow.ui
         widgets/secondwidget.h
         widgets/secondwidget.cpp
-        # twitch/channel.h
-        # twitch/channel.cpp
+        twitch/channel.h
+        twitch/channel.cpp
         twitch/user.h
         twitch/user.cpp
         # htmldelegate.h

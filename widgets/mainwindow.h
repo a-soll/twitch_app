@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "twitch/user.h"
-#include "rest/rest.h"
 #include "widgets/secondwidget.h"
 #include <QMainWindow>
 #include <QPushButton>
@@ -26,11 +25,17 @@ private slots:
     void on_searchButton_clicked();
     void on_searchBar_returnPressed();
     void done();
+    void finished_reading();
+    void read_data();
 
 private:
     Ui::MainWindow *ui;
     QNetworkAccessManager *netManager;
+    QNetworkRequest *req;
+    QNetworkReply *net_reply;
+    QByteArray data_buffer;
     QPixmap *img;
+    User *user;
     Request *request;
 };
 #endif // MAINWINDOW_H

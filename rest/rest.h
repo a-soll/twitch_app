@@ -6,6 +6,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QNetworkReply>
+#include <QSettings>
 
 class Request : public QObject {
     Q_OBJECT;
@@ -13,16 +14,21 @@ class Request : public QObject {
 public:
     Request(QNetworkRequest *parent = nullptr);
     // ~Request();
-    static const QString base_url;
+    static QString base_url;
     QJsonObject response;
     QNetworkReply *net_reply;
+    QNetworkRequest *req;
+    QString client_id;
+    QString user_token;
 
 private slots:
     void read_data();
     void finished_reading();
+    void get_settings();
 
 public slots:
     void get(QString url);
+    void set_custom_header(QString key, QString value);
 
 signals:
     void finished();

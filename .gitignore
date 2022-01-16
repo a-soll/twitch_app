@@ -1,4 +1,5 @@
 build/
 cmakelists.txt.user
-secret
+secret.ini
 .vscode/c_cpp_properties.json
+html*
