@@ -35,7 +35,7 @@ private:
     QNetworkReply *net_reply;
     QByteArray data_buffer;
     QPixmap *img;
-    User *user;
+    User *appUser;
     Request *request;
 };
 #endif // MAINWINDOW_H

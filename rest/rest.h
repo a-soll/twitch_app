@@ -13,7 +13,7 @@ class Request : public QObject {
 
 public:
     Request(QNetworkRequest *parent = nullptr);
-    // ~Request();
+    ~Request();
     static QString base_url;
     QJsonObject response;
     QNetworkReply *net_reply;

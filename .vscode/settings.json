@@ -1,4 +1,7 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "git.autoRepositoryDetection": "subFolders",
+    "code-runner.executorMapByGlob": {
+        "*.cpp|*.h": "cd $workspaceRoot && /usr/local/bin/cmake --build /Users/adam/code/twitch_app/twitch_app/build --config Debug --target all -j 12 -- && $workspaceRoot/build/twitch_app"
+    }
 }

@@ -17,7 +17,7 @@ public:
     std::vector<Channel> followed;
 
 private:
-    void done();
+    void request_finished();
 
     QString url;
     Request *request;

@@ -5,13 +5,15 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <iostream>
+#include <QtWidgets/QDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     netManager = new QNetworkAccessManager(this);
     img = new QPixmap;
-    user = new User;
+    appUser = new User;
+    appUser->id = "42045317";
     request = new Request;
     // setFixedSize(606, 469);
 }
@@ -43,7 +45,6 @@ void MainWindow::done() {
 }
 
 void MainWindow::userName() {
-    User u;
     // QNetworkRequest req;
     // req.setUrl(QString("https://api.github.com/users/%1").arg("a-soll"));
     // net_reply = netManager->get(req);
@@ -63,7 +64,7 @@ void MainWindow::userName() {
 
 void MainWindow::on_searchButton_clicked() {
     QString firstName = ui->searchBar->text();
-    user->get_followed_channels();
+    appUser->get_followed_channels();
     // userName();
 }
 
