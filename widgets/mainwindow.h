@@ -3,9 +3,13 @@
 
 #include "twitch/user.h"
 #include "widgets/secondwidget.h"
+#include "widgets/sidebar.h"
 #include <QMainWindow>
 #include <QPushButton>
 #include <QPixmap>
+#include <QStringListModel>
+#include <QStandardItem>
+#include <QListView>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,6 +31,7 @@ private slots:
     void done();
     void finished_reading();
     void read_data();
+    void populate_follow_bar();
 
 private:
     Ui::MainWindow *ui;
@@ -37,5 +42,6 @@ private:
     QPixmap *img;
     User *appUser;
     Request *request;
+    SideBar *sidebar;
 };
 #endif // MAINWINDOW_H

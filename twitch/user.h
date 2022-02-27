@@ -5,19 +5,27 @@
 #include "rest/rest.h"
 #include <QObject>
 
-class User : public QObject {
-    Q_OBJECT;
+class User : public QObject{
+    Q_OBJECT
 
 public:
-    User(QObject *parent = nullptr);
+    User(QString id_param, QObject *parent = 0);
+    ~User();
     void get_followed_channels();
+    void get_profile_image();
+    static QJsonObject get_user(QString user_id);
 
     QString id;
     QString name;
-    std::vector<Channel> followed;
+    QString profile_image_url;
+    std::vector<Channel*> followed;
+
+signals:
+    void finished();
 
 private:
     void request_finished();
+    void populate_follows();
 
     QString url;
     Request *request;

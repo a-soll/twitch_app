@@ -32,6 +32,8 @@ set(PROJECT_SOURCES
         # htmldelegate.cpp
         rest/rest.h
         rest/rest.cpp
+        widgets/sidebar.h
+        widgets/sidebar.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

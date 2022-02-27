@@ -3,5 +3,10 @@
     "git.autoRepositoryDetection": "subFolders",
     "code-runner.executorMapByGlob": {
         "*.cpp|*.h": "cd $workspaceRoot && /usr/local/bin/cmake --build /Users/adam/code/twitch_app/twitch_app/build --config Debug --target all -j 12 -- && $workspaceRoot/build/twitch_app"
+    },
+    "cmake.debugConfig": {
+        // "miDebuggerPath": "/Users/adam/.vscode/extensions/ms-vscode.cpptools-1.7.1/debugAdapters/lldb-mi/bin/lldb-mi",
+        "miDebuggerPath": "/usr/bin/lldb",
+        "MIMode": "lldb"
     }
 }

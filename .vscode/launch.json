@@ -5,16 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(lldb) Launch",
+            "name": "L2",
             "type": "cppdbg",
             "request": "launch",
-            "program": "enter program name, for example ${workspaceFolder}/a.out",
+            "program": "${workspaceFolder}/build/twitch_app",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",
+            "visualizerFile": "/Users/adam/Library/Application Support/Code/User/workspaceStorage/f648c19592eb17bd9eeef3c0d578989d/tonka3000.qtvsctools/qt.natvis.xml",
+            "targetArchitecture": "arm"
+        },
+        {
+            "name": "Launch",
+            "type": "cppdbg",
+            "program": "${workspaceRoot}/build/twitch_app",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "targetArchitecture": "arm64",
             "visualizerFile": "/Users/adam/Library/Application Support/Code/User/workspaceStorage/f648c19592eb17bd9eeef3c0d578989d/tonka3000.qtvsctools/qt.natvis.xml"
         }
     ]

@@ -1,19 +1,19 @@
 #include "rest.h"
 
 QString Request::base_url = QString("https://api.twitch.tv/helix");
+QSettings Request::settings = QSettings(QString("secret.ini"), QSettings::IniFormat);
+QString Request::client_id = Request::settings.value("client").toString();
+QString Request::user_token = Request::settings.value("token").toString();
 
-Request::Request(QNetworkRequest *parent) {
-    net_manager = new QNetworkAccessManager(this);
+Request::Request(QObject *parent) : QObject(parent) {
+    net_manager = new QNetworkAccessManager;
     net_reply = nullptr;
     req = new QNetworkRequest;
-    get_settings();
 }
 
-void Request::get_settings() {
-    QSettings settings(QString("secret.ini"), QSettings::IniFormat);
-    client_id = settings.value("client").toString();
-    user_token = settings.value("token").toString();
-    qDebug() << "id: " << client_id;
+Request::~Request() {
+    delete net_manager;
+    delete req;
 }
 
 void Request::read_data() {
@@ -41,6 +41,13 @@ void Request::get(QString url) {
     req->setUrl(url);
     qDebug() << "url: " << url;
     net_reply = net_manager->get(*req);
-    connect(net_reply, &QNetworkReply::readyRead, this, &Request::read_data);
-    connect(net_reply, &QNetworkReply::finished, this, &Request::finished_reading);
+    QObject::connect(net_reply, &QNetworkReply::readyRead, this, &Request::read_data);
+    QObject::connect(net_reply, &QNetworkReply::finished, this, &Request::finished_reading);
 }
+
+// void Request::get_user_followers(QString user_id) {
+//     QString uri = QString("%1/streams/followed?user_id=%2").arg(Request::base_url).arg(user_id);
+//     get(uri);
+    // Request::get(uri);
+    // connect(&Request::net_reply, &QNetworkReply::finished, this, &Request::finished_reading);
+// }
