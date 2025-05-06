@@ -11,6 +11,7 @@ class SideBar : public QListView {
 public:
     SideBar(QListView *parent = nullptr);
     ~SideBar();
+    void add_item();
 
     QList<QStandardItem*> list_item;
     QStandardItemModel *model;

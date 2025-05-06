@@ -10,6 +10,8 @@
 #include <QStringListModel>
 #include <QStandardItem>
 #include <QListView>
+#include <QVideoWidget>
+#include <QMediaPlayer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -32,6 +34,7 @@ private slots:
     void finished_reading();
     void read_data();
     void populate_follow_bar();
+    void play();
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +45,9 @@ private:
     QPixmap *img;
     User *appUser;
     Request *request;
-    SideBar *sidebar;
+    QListView *sidebar;
+    QStandardItemModel *model;
+    QVideoWidget *vid;
+    QMediaPlayer *player;
 };
 #endif // MAINWINDOW_H

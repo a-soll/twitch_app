@@ -10,21 +10,26 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    sidebar = new SideBar;
+    // sidebar = new SideBar;
+    model = new QStandardItemModel;
     // img = new QPixmap;
     // appUser = new User(User::get_user("42045317"));
     appUser = new User("42045317");
     // appUser->id = "42045317";
     request = new Request;
+    player = new QMediaPlayer;
     appUser->get_followed_channels();
+    // QVideoWidget *vid = new QVideoWidget(ui->vidWidget);
+    vid = new QVideoWidget(ui->vidWidget);
     connect(appUser, &User::finished, this, &MainWindow::populate_follow_bar);
+    play();
 }
 
 MainWindow::~MainWindow() {
     delete ui;
     delete appUser;
     delete request;
-    delete sidebar;
+    delete model;
 }
 
 void MainWindow::read_data() {
@@ -84,26 +89,31 @@ void MainWindow::on_searchBar_returnPressed() {
 }
 
 void MainWindow::populate_follow_bar() {
-    // QListView sidebar = ui->listView;
-    // QStringList list;
-    QStandardItemModel *model = new QStandardItemModel;
-    sidebar->setModel(model);
-    QList<QStandardItem *> list_item;
-    // QStringListModel *model = new QStringListModel();
     QFont font("Helvetica", 18);
-    // sidebar->setFont(font);
-    sidebar->setMouseTracking(true);
-
+    ui->sideBar->setFont(font);
+    ui->sideBar->setModel(model);
+    QList<QStandardItem *> list_item;
     for (auto it = begin(appUser->followed); it != end(appUser->followed); ++it) {
         Channel *chan = it.operator*();
         User *u = new User(chan->user_id);
-        // u->get_profile_image();
-        // img.loadFromData();
         QStandardItem *item = new QStandardItem;
         item->setFont(font);
         item->setText(chan->user_name);
         list_item.append(item);
-        // list.append(chan->user_name);
+        delete u;
     }
     model->appendColumn(list_item);
+}
+
+void MainWindow::play() {
+    // QVideoWidget *vidw = new QVideoWidget;
+    qDebug() << vid->frameGeometry().height();
+    vid->setMinimumWidth(500);
+    vid->setMinimumHeight(500);
+    player->setSource(QUrl::fromLocalFile("/Users/adam/Downloads/yt5s.com-So I Tried Lost Ark...-(1080p).mp4"));
+
+    player->setVideoOutput(vid);
+
+    vid->show();
+    player->play();
 }

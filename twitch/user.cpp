@@ -49,5 +49,5 @@ void User::get_profile_image() {
 
 QJsonObject User::get_user(QString user_id) {
     QString url = "https://api.twitch.tv/helix/users";
-
+    
 }

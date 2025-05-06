@@ -16,6 +16,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS QuickControls2 REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Network REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS MultimediaWidgets REQUIRED)
+find_package(Qt6 COMPONENTS Multimedia REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -64,6 +66,8 @@ target_link_libraries(twitch_app PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(twitch_app PRIVATE Qt${QT_VERSION_MAJOR}::QuickControls2)
 target_link_libraries(twitch_app PRIVATE Qt${QT_VERSION_MAJOR}::Network)
 target_link_libraries(twitch_app PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(twitch_app PRIVATE Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
+target_link_libraries(twitch_app PRIVATE Qt${QT_VERSION_MAJOR}::Multimedia)
 
 set_target_properties(twitch_app PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
